@@ -1,5 +1,7 @@
 package com.aartek.repository;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.orm.hibernate3.HibernateTemplate;
 import org.springframework.stereotype.Repository;
@@ -24,6 +26,13 @@ public class RegistrationRepository {
 			return null;
 		
 	}
+	public List<Registration> validateEmail(String email)
+	{
+		
+	  List<Registration> list= hibernateTemplate.find("select email from Registration r where r.email=?",email);
+	  return list;
+	}
+
 	
 
 }
